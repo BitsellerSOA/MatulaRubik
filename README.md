@@ -2,8 +2,8 @@
 Proyecto SOA UNLAM 2018 1 C Martes Noche
 
 ### Colaboradores
-Radice Adrian
-Sanabria Facundo
+- Radice Adrian
+- Sanabria Facundo
 
 ### Introduccion
 El proyecto es una implementacion de IOT, el mismo consiste en un SE que tendra el fin de resolver el cubo rubik. 

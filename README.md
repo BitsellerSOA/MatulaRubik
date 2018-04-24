@@ -2,7 +2,8 @@
 Proyecto SOA UNLAM 2018 1 C Martes Noche
 
 ### Colaboradores
-- Radice Adrian
+- Estigarribia Emanuel
+- [Radice Adrian](https://github.com/adrianRadice)
 - Sanabria Facundo
 
 ### Introduccion

@@ -23,6 +23,6 @@ Desde que el cubo es analizado por la App Movil y el SE devuelve el cubo resuelt
 
 
 ### Dedicación
-Este proyecto tiene una dedicación a nuestro hermano especial perdido en acción. Matias por siempre presente en Bitseller.
+Este proyecto es una dedicación especial a nuestro hermano perdido en acción. Matias por siempre presente en Bitseller.
 
 ![capture _2018-04-22-23-10-08](https://user-images.githubusercontent.com/31006922/39163878-f394d140-4752-11e8-821f-0f31efdf559e.png)

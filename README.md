@@ -1,4 +1,5 @@
 # MatulaRubik
+<img align="left" width="25" height="25" src="http://posgrado.unlam.edu.ar/img/ico_unlam.jpg">
 Proyecto SOA UNLAM 2018 1 C Martes Noche
 
 ### Colaboradores

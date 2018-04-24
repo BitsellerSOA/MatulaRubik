@@ -25,5 +25,7 @@ Desde que el cubo es analizado por la App Movil y el SE devuelve el cubo resuelt
 ### Dedicación
 Este proyecto es una dedicación especial a nuestro hermano perdido en acción. Matias por siempre presente en Bitseller.
 <p align="center">
-<img src="https://user-images.githubusercontent.com/31006922/39163878-f394d140-4752-11e8-821f-0f31efdf559e.png">
-<\p>
+  
+  <img src="https://user-images.githubusercontent.com/31006922/39163878-f394d140-4752-11e8-821f-0f31efdf559e.png">
+  
+</p>

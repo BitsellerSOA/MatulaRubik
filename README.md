@@ -1,5 +1,4 @@
 # MatulaRubik
-<img align="left" width="25" height="25" src="http://posgrado.unlam.edu.ar/img/ico_unlam.jpg">
 Proyecto SOA UNLAM 2018 1 C Martes Noche
 
 ### Colaboradores
@@ -26,4 +25,4 @@ Desde que el cubo es analizado por la App Movil y el SE devuelve el cubo resuelt
 ### Dedicación
 Este proyecto es una dedicación especial a nuestro hermano perdido en acción. Matias por siempre presente en Bitseller.
 
-![capture _2018-04-22-23-10-08](https://user-images.githubusercontent.com/31006922/39163878-f394d140-4752-11e8-821f-0f31efdf559e.png)
+<img align="center" src="https://user-images.githubusercontent.com/31006922/39163878-f394d140-4752-11e8-821f-0f31efdf559e.png">

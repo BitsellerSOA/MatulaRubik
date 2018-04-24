@@ -19,3 +19,9 @@ Desde que el cubo es analizado por la App Movil y el SE devuelve el cubo resuelt
 - La App Android `MatrulaRubik` registra un historial de logros ( Tiempos previos logrados ) y configuración del Cubo.
 - El sketch de Arduino retirara la solucion entregada por `MatrulaRubik` del repositorio WEB.
 - El sketch de Arduino interpretera la solucion del cubo y la traducira en los movimientos mecanicos.
+
+
+### Dedicación
+Este proyecto tiene una dedicación a nuestro hermano especial perdido en acción. Matias por siempre presente en Bitseller.
+
+![capture _2018-04-22-23-10-08](https://user-images.githubusercontent.com/31006922/39163878-f394d140-4752-11e8-821f-0f31efdf559e.png)

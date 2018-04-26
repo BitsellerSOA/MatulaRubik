@@ -16,9 +16,9 @@ Resolver el cubo rubik, mediante un sistema automático.
 Desde que el cubo es analizado por la App Movil y el SE devuelve el cubo resuelto como fue indicado por la APP.
 
 ### Alcance
-- La App Android `MatrulaRubik` analizara el cubo, capturando la posición de los colores con el uso de la libreria OpenCV 3.4.1, y entregara en un repositorio web la solución a ser tratada por el SE.
-- La App Android `MatrulaRubik` registra un historial de logros ( Tiempos previos logrados ) y configuración del Cubo.
-- El sketch de Arduino retirara la solución entregada por `MatrulaRubik` del repositorio WEB.
+- La App Android `MatulaRubik` analizara el cubo, capturando la posición de los colores con el uso de la libreria OpenCV 3.4.1, y entregara en un repositorio web la solución a ser tratada por el SE.
+- La App Android `MatulaRubik` registra un historial de logros ( Tiempos previos logrados ) y configuración del Cubo.
+- El sketch de Arduino retirara la solución entregada por `MatulaRubik` del repositorio WEB.
 - El sketch de Arduino interpretará  la solución  del cubo y la traducirá  en los movimientos mecánicos.
 
 

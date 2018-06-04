@@ -1,0 +1,11 @@
+C:\Users\adrianRadice\source\repos\RubikSolver\RubikSolver\bin\Debug\netcoreapp2.0\RubikSolver.deps.json
+C:\Users\adrianRadice\source\repos\RubikSolver\RubikSolver\bin\Debug\netcoreapp2.0\RubikSolver.runtimeconfig.json
+C:\Users\adrianRadice\source\repos\RubikSolver\RubikSolver\bin\Debug\netcoreapp2.0\RubikSolver.runtimeconfig.dev.json
+C:\Users\adrianRadice\source\repos\RubikSolver\RubikSolver\bin\Debug\netcoreapp2.0\RubikSolver.dll
+C:\Users\adrianRadice\source\repos\RubikSolver\RubikSolver\bin\Debug\netcoreapp2.0\RubikSolver.pdb
+C:\Users\adrianRadice\source\repos\RubikSolver\RubikSolver\obj\Debug\netcoreapp2.0\RubikSolver.csprojResolveAssemblyReference.cache
+C:\Users\adrianRadice\source\repos\RubikSolver\RubikSolver\obj\Debug\netcoreapp2.0\RubikSolver.csproj.CoreCompileInputs.cache
+C:\Users\adrianRadice\source\repos\RubikSolver\RubikSolver\obj\Debug\netcoreapp2.0\RubikSolver.AssemblyInfoInputs.cache
+C:\Users\adrianRadice\source\repos\RubikSolver\RubikSolver\obj\Debug\netcoreapp2.0\RubikSolver.AssemblyInfo.cs
+C:\Users\adrianRadice\source\repos\RubikSolver\RubikSolver\obj\Debug\netcoreapp2.0\RubikSolver.dll
+C:\Users\adrianRadice\source\repos\RubikSolver\RubikSolver\obj\Debug\netcoreapp2.0\RubikSolver.pdb

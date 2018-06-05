@@ -1,5 +1,8 @@
 package cubo;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Cubo {
 
 	public final char AMARILLO = 'Y';
@@ -15,7 +18,18 @@ public class Cubo {
 	public final int L = 3;
 	public final int U = 4;
 	public final int D = 5;
-
+	
+	public int caraAmarrilla;
+	public int caraAzul;
+	public int caraBlanca;
+	public int caraRoja;
+	public int caraVerde;
+	public int caraNaranja;
+	
+	public Queue<String> resultado = new LinkedList<>();
+	
+	
+	
 	public Cubo()
 	{
 		for (int i = 0; i < 9; i++)
@@ -27,6 +41,15 @@ public class Cubo {
 			cubo[D][i] = AMARILLO;
 			cubo[U][i] = BLANCO;
 		}
+		
+		caraAmarrilla = D;
+		caraAzul = R;
+		caraBlanca = U;
+		caraRoja = F ;
+		caraVerde = L;
+		caraNaranja = B;
+		
+		
 	}
 
 	private char[][] cubo = new char[6][9];
@@ -70,6 +93,27 @@ public class Cubo {
 			break;
 		}
 	}
+	
+	private void SetColor(char color, int index, int cara)
+	{
+		switch (cara)
+		{
+		case F:
+		case D:
+		case R:
+		case L:
+			cubo[cara][index] = color;
+			break;
+
+		case B:
+			cubo[B][index] = color;
+			break;
+
+		case U:
+			cubo[cara][index] = color;
+			break;
+		}
+	}
 
 	public void SetColorEnU(char color, int fil, int col)
 	{
@@ -95,7 +139,8 @@ public class Cubo {
 	{
 		SetColor(color, fil, col, R);
 	}
-	private char GetColor(int x, int y, int cara)
+	
+	public char GetColor(int x, int y, int cara)
 	{
 		switch (cara)
 		{
@@ -108,6 +153,22 @@ public class Cubo {
 			return cubo[B][getIndex(x, y, cara)];
 		case U:
 			return cubo[cara][getIndex(x, y, cara)];
+		}
+		return 'E';
+	}
+	public char GetColor(int index, int cara)
+	{
+		switch (cara)
+		{
+		case F:
+		case D:
+		case R:
+		case L:
+			return cubo[cara][index];
+		case B:
+			return cubo[B][index];
+		case U:
+			return cubo[cara][index];
 		}
 		return 'E';
 	}
@@ -178,6 +239,9 @@ public class Cubo {
 		}
 
 		RotarCaraSentidoHorario(U);
+		
+		System.out.println(" U ");
+		resultado.add("U");
 	}
 	public void UantiHorario()
 	{
@@ -191,6 +255,9 @@ public class Cubo {
 			cubo[R][i] = temp;
 		}
 		RotarCaraSentidoAntiHorario(U);
+		
+		System.out.println(" Ua ");
+		resultado.add("Ua");
 	}
 
 	public void DantiHorario()
@@ -204,7 +271,11 @@ public class Cubo {
 			cubo[B][i] = cubo[L][i];
 			cubo[L][i] = temp;
 		}
-		RotarCaraSentidoHorario(D);
+		
+		RotarCaraSentidoHorario(D); /////esta bien esto?
+		
+		System.out.println(" Da ");
+		resultado.add("Da");
 	}
 	/// <summary>
 	/// Rotar cara inferior (Ej. Amarillo) sentido antihorario
@@ -221,6 +292,9 @@ public class Cubo {
 			cubo[R][i] = temp;
 		}
 		RotarCaraSentidoHorario(D);
+		
+		System.out.println(" D ");
+		resultado.add("D");
 	}
 
 	public void Rhorario()
@@ -254,6 +328,9 @@ public class Cubo {
 		cubo[R][1] = cubo[R][3];
 		cubo[R][3] = cubo[R][7];
 		cubo[R][7] = temp;
+		
+		System.out.println(" R ");
+		resultado.add("R");
 	}
 	public void RantiHorario()
 	{
@@ -286,6 +363,9 @@ public class Cubo {
 		cubo[R][5] = cubo[R][7];
 		cubo[R][7] = cubo[R][3];
 		cubo[R][3] = temp;
+		
+		System.out.println("Ra");
+		resultado.add(" Ra ");
 	}
 
 	/// <summary>
@@ -322,6 +402,9 @@ public class Cubo {
 		cubo[L][1] = cubo[L][3];
 		cubo[L][3] = cubo[L][7];
 		cubo[L][7] = temp;
+		
+		System.out.println(" L ");
+		resultado.add("L");
 	}
 
 	public void LantiHorario()
@@ -355,6 +438,9 @@ public class Cubo {
 		cubo[L][5] = cubo[L][7];
 		cubo[L][7] = cubo[L][3];
 		cubo[L][3] = temp;
+		
+		System.out.println(" La ");
+		resultado.add(" La ");
 	}
 
 	public void Fhorario()
@@ -390,6 +476,8 @@ public class Cubo {
             cubo[F][7] = temp;*/
 
 		RotarCaraSentidoAntiHorario(F);
+		System.out.println(" F ");
+		resultado.add("F");
 	}
 
 	public void FantiHorario()
@@ -425,6 +513,8 @@ public class Cubo {
             cubo[F][3] = temp;*/
 
 		RotarCaraSentidoAntiHorario(F);
+		System.out.println(" Fa ");
+		resultado.add("Fa");
 	}
 
 	public void Bhorario()
@@ -448,6 +538,9 @@ public class Cubo {
 		cubo[L][6] = temp;
 
 		RotarCaraSentidoHorario(B);
+		
+		System.out.println(" B ");
+		resultado.add("B");
 	}
 	public void BantiHorario()
 	{
@@ -470,6 +563,280 @@ public class Cubo {
 		cubo[R][8] = temp;
 
 		RotarCaraSentidoAntiHorario(B);
+		
+		System.out.println(" Ba ");
+		resultado.add("Ba");
 	}
+	
+	//le decis un color y te dice q cara tiene ese color
+	public int GetCara(char color){
+		switch(color){
+			case 'Y': return this.caraAmarrilla;
+			case 'B': return this.caraAzul;
+			case 'W': return this.caraBlanca;
+			case 'R': return this.caraRoja;
+			case 'V': return this.caraVerde;
+			case 'N': return this.caraNaranja;
+		}
+		
+		return -1;
+	}
+	
+	// le decis el numero de cara y la gira horario
+	public void GirarCaraHorario( int cara ){
+		switch(cara){
+			case 0: Fhorario();
+					return;
+			case 1:	Rhorario();
+					return;
+			case 2: Bhorario();
+					return;
+			case 3: Lhorario();
+					return;
+			case 4: Uhorario();
+					return;
+			case 5: Dhorario();
+					return;
+		}
+	}
+	
+	// le decis el numero de la cara y la gira antihorario
+	public void GirarCaraAntihorario( int cara){
+		switch(cara){
+		case 0: FantiHorario();
+				return;
+		case 1:	RantiHorario();
+				return;
+		case 2: BantiHorario();
+				return;
+		case 3: LantiHorario();
+				return;
+		case 4: UantiHorario();
+				return;
+		case 5: DantiHorario();
+				return;
+		}
+	}
+	
+	public void GirarCara(int cara, boolean horario){
+		if(horario == true){
+			GirarCaraHorario(cara);
+		}
+		else{
+			GirarCaraAntihorario(cara);
+		}
+	}
+	
+	
+	
+	public void HacerCruz(){
+	int i;
+	// int giros;
+	int posActual[] = new int[2];
+	int caraDeAlLado;
+	int cantPiezasPuestas=0;
+	int distancia;
+	int caraDestino;
+	int caraActualArista;
+	//	if( ( posActual = HayBlancosEnD() )!= -1){
+			//estaEnSuLugar( posActual, );
+	//	}
+	
+		while(cantPiezasPuestas < 4){
+			posActual = HayBlancosEnElMedio();
+			if(  posActual[0] == -1){
+				posActual = HayBlancosArriba();
+			}
+			if(  posActual[0] != -1){
+
+				//gira la capa de abajo para q la blanca quede a un giro de estar bien puesta
+
+				
+				// determina donde esta la otra parte de la arista 
+				if(posActual[0] == 4) //el blanco esta en la capa de arriba
+				{
+					switch(posActual[1]){
+						case 1: caraActualArista = 0; // F
+								break;
+						case 3: caraActualArista = 3; // L
+								break;
+						case 5: caraActualArista = 2; // B
+								break;
+						case 7: caraActualArista = 1; // R
+								break;
+						default: System.out.println( "errror en el swtchde calcularcantidaddeD" );
+								caraActualArista = -100; // R
+								break;
+					}		
+					caraDestino = GetCara( GetColor(1, caraActualArista)); //determina la cara donde tiene q ir
+				}
+				else{ // esta en la cara del medio el blanco
+					if( posActual[0] == 5 ){
+						caraActualArista = posActual[1] + 1;
+						if(caraActualArista == 4)
+							caraActualArista = 0;
+						caraDestino = GetCara( GetColor(3, caraActualArista)); //determina la cara donde tiene q ir
+					}
+					else{
+						caraActualArista= posActual[1] - 1;
+						if(caraActualArista == -1)
+							caraActualArista = 3;
+						caraDestino = GetCara( GetColor(5, caraActualArista)); //determina la cara donde tiene q ir
+					}		
+				}
+				
+				distancia = caraDestino - caraActualArista;            
+				
+				// hace q 3 giros para un lado los cambie por 1 giro para el otro
+				if(distancia == 3){
+					distancia = -1;
+				}
+				if(distancia == -3){
+					distancia = 1;
+				}
+					
+				if(distancia < 0){
+					for(i=0; i<distancia; i++){
+						DantiHorario();
+					}
+				}
+				else {
+					for(i=0; i<distancia; i++){
+						Dhorario();
+					}
+				}
+				
+				// Hace el giro para q quede bien puesta
+				
+				if(posActual[0] == 4){
+					GirarCaraHorario(caraActualArista);
+					GirarCaraHorario(caraActualArista);
+				}
+				else if( posActual[1] == 3){
+					GirarCaraHorario(caraActualArista);
+				}
+				else{
+					GirarCaraAntihorario(caraActualArista);
+				}
+				
+				//rehace los giros de abajo (para el otro lado) para q quede todo bien
+				if(distancia < 0){
+					for(i=0; i<distancia; i++){
+						Dhorario();
+					}
+				}
+				else {
+					for(i=0; i<distancia; i++){
+						DantiHorario();
+					}
+				}
+			}
+			else {
+				
+				
+			}
+			
+		}
+
+	}
+	
+	private int calcularCantidadDeD(int[] posActual) {
+		int distancia;
+		int caraDestino;
+		int caraActualArista;
+		
+		
+		// determina donde esta la otra parte de la arista 
+		if(posActual[0] == 4) //el blanco esta en la capa de arriba
+		{
+			switch(posActual[1]){
+				case 1: caraActualArista = 0; // F
+						break;
+				case 3: caraActualArista = 3; // L
+						break;
+				case 5: caraActualArista = 2; // B
+						break;
+				case 7: caraActualArista = 1; // R
+						break;
+				default: System.out.println( "errror en el swtchde calcularcantidaddeD" );
+						caraActualArista = -100; // R
+						break;
+			}		
+			caraDestino = GetCara( GetColor(1, caraActualArista)); //determina la cara donde tiene q ir
+		}
+		else{ // esta en la cara del medio el blanco
+			if( posActual[0] == 5 ){
+				caraActualArista = posActual[1] + 1;
+				if(caraActualArista == 4)
+					caraActualArista = 0;
+				caraDestino = GetCara( GetColor(3, caraActualArista)); //determina la cara donde tiene q ir
+			}
+			else{
+				caraActualArista= posActual[1] - 1;
+				if(caraActualArista == -1)
+					caraActualArista = 3;
+				caraDestino = GetCara( GetColor(5, caraActualArista)); //determina la cara donde tiene q ir
+			}		
+		}
+		
+		distancia = caraDestino - caraActualArista;            
+		
+		// hace q 3 giros para un lado los cambie por 1 giro para el otro
+		if(distancia == 3){
+			distancia = -1;
+		}
+		if(distancia == -3){
+			distancia = 1;
+		}
+		
+		return distancia;
+	}
+
+	public int HayBlancosEnD(){
+		
+		return -1;
+	}
+	
+	public int[] HayBlancosEnElMedio(){
+		int i;
+		int posActual[] = new int[2];
+		char ColorAbajo = GetColorEnD(1, 1); 
+		for(i=0; i<4; i++){
+			if( GetColor(1, 2,i) == ColorAbajo){				
+				posActual[0] = i;
+				posActual[1] = 5;
+				return posActual;
+			}
+		}
+		for(i=0; i<4; i++){
+			if( GetColor(1, 0,i) == ColorAbajo){
+				posActual[0] = i;
+				posActual[1] = 3;
+				return posActual;
+			}
+		}
+		posActual[0] = -1;
+		return posActual;
+	}
+	
+	public int[] HayBlancosArriba(){
+		int i;
+		int posActual[] = new int[2];
+		char ColorAbajo = GetColorEnD(1, 1); 
+		
+		for(i=1; i <= 7; i+=2){ //mira las posiciones 1 3 5 y 7 (las aristas)
+		
+			if( GetColor(i, 4) == ColorAbajo){				
+				posActual[0] = 4;
+				posActual[1] = i;
+				return posActual;
+			}
+		}
+
+		posActual[0] = -1;
+		return posActual;
+	}
+	
+
 }
 

@@ -635,10 +635,12 @@ public class Cubo {
 	// int giros;
 	int posActual[] = new int[2];
 	int caraDeAlLado;
-	int cantPiezasPuestas=0;
+	int cantPiezasPuestas = 0;
 	int distancia;
 	int caraDestino;
 	int caraActualArista;
+	int posicion;
+	//int bienPuestos[] = new int[4]; // [1,3,5,7]
 	//	if( ( posActual = HayBlancosEnD() )!= -1){
 			//estaEnSuLugar( posActual, );
 	//	}
@@ -648,20 +650,22 @@ public class Cubo {
 			posActual = HayBlancosEnElMedio(); // Para los blancos que halla en la posicion 3 y 5 de las capas F, L, R o D;
 			if(  posActual[0] == -1){
 				PonerAbajoDesdeElMedio(posActual);
+				cantPiezasPuestas++;
 			}
 			else {
 				posActual = HayBlancosArriba(); // Para los blancos que halla en U
 				if(  posActual[0] == -1){
 					PonerAbajoDesdeU(posActual);
+					cantPiezasPuestas++;
 				}
 				else {
-					/*
-					posActual = HayBlancosEnD(); // Para los blancos que halla mal puestos en D
+					posActual = HayBlancosEnD(); // Para los blancos que halla mal puestos en D; ya los pone arriba
 					if(  posActual[0] == -1){
-						PonerAbajoDesdeD(posActual);
+						PonerAbajoDesdeU(posActual); // Usa este porque HayBlancosEnD() ya te los deja puestos en U
+						cantPiezasPuestas++;
 					}
 					else {
-											/*
+						/*
 						posActual = HayBlancosArribaAlCostado();	//para los blancos que halla en la posicion 1 de las capas F, L R o D;
 						if(  posActual[0] == -1){
 							PonerAbajoDesdeArribaAlCostado(posActual);
@@ -671,9 +675,12 @@ public class Cubo {
 							if(  posActual[0] == -1){
 								PonerAbajoDesdeAbajoAlCostado(posActual);
 							}
+							else{
+								cantPiezas = 4; // return;
+							}
 						}
-					}
 					*/
+					}
 				}
 					
 			}		
@@ -808,12 +815,57 @@ public class Cubo {
 		
 	}
 
-/*
-	public int HayBlancosEnD(){
-		
-		return -1;
+	// para blancos que esten mal puestos en D. solo los q estan mal puestos
+	public int[] HayBlancosEnD(){
+		int posActual[] = new int[2];
+		char ColorAbajo = GetColorEnD(1, 1); 
+	
+		if( GetColor(1, D) == ColorAbajo){
+			if( GetColor(1,F) != GetColor(4,F)){
+				// gira dos veces para ponerlo arriba y devuelve la posicion nueva
+				GirarCaraHorario(F);
+				GirarCaraHorario(F);
+				posActual[0] = U;
+				posActual[1] = 7;
+				return posActual;
+			}
+		}
+		if( GetColor(3, D) == ColorAbajo){
+			if( GetColor(3,L) != GetColor(4,L)){
+				// gira dos veces para ponerlo arriba y devuelve la posicion nueva
+				GirarCaraHorario(L);
+				GirarCaraHorario(L);
+				posActual[0] = U;
+				posActual[1] = 3;
+				return posActual;
+			}
+		}
+		if( GetColor(5, D) == ColorAbajo){
+			if( GetColor(5,R) != GetColor(4,R)){
+				// gira dos veces para ponerlo arriba y devuelve la posicion nueva
+				GirarCaraHorario(R);
+				GirarCaraHorario(R);
+				posActual[0] = U;
+				posActual[1] = 5;
+				return posActual;
+			}
+		} 
+		if( GetColor(7, D) == ColorAbajo){
+			if( GetColor(7,B) != GetColor(4,B)){
+				// gira dos veces para ponerlo arriba y devuelve la posicion nueva
+				GirarCaraHorario(B);
+				GirarCaraHorario(B);
+				posActual[0] = U;
+				posActual[1] = 1;
+				return posActual;
+			}
+		}
+				
+		posActual[0] = -1;
+		return posActual;
 	}
-*/
+
+	
 	//Busca los blancos en la posicion 3 y 5 de las capas F, L, R o D;
 	public int[] HayBlancosEnElMedio(){
 		int i;

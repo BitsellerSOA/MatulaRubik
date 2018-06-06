@@ -272,7 +272,7 @@ public class Cubo {
 			cubo[L][i] = temp;
 		}
 		
-		RotarCaraSentidoHorario(D); /////esta bien esto?
+		RotarCaraSentidoAntiHorario(D); 
 		
 		System.out.println(" Da ");
 		resultado.add("Da");
@@ -440,7 +440,7 @@ public class Cubo {
 		cubo[L][3] = temp;
 		
 		System.out.println(" La ");
-		resultado.add(" La ");
+		resultado.add("La");
 	}
 
 	public void Fhorario()
@@ -568,7 +568,7 @@ public class Cubo {
 		resultado.add("Ba");
 	}
 	
-	//le decis un color y te dice q cara tiene ese color
+	//le decis un color y te dice q cara tendria que ir
 	public int GetCara(char color){
 		switch(color){
 			case 'Y': return this.caraAmarrilla;
@@ -618,6 +618,7 @@ public class Cubo {
 		}
 	}
 	
+	// le decis el numero de la cara y si es horario pones horario en true
 	public void GirarCara(int cara, boolean horario){
 		if(horario == true){
 			GirarCaraHorario(cara);
@@ -643,143 +644,66 @@ public class Cubo {
 	//	}
 	
 		while(cantPiezasPuestas < 4){
-			posActual = HayBlancosEnElMedio();
+			
+			posActual = HayBlancosEnElMedio(); // Para los blancos que halla en la posicion 3 y 5 de las capas F, L, R o D;
 			if(  posActual[0] == -1){
-				posActual = HayBlancosArriba();
-			}
-			if(  posActual[0] != -1){
-
-				//gira la capa de abajo para q la blanca quede a un giro de estar bien puesta
-
-				
-				// determina donde esta la otra parte de la arista 
-				if(posActual[0] == 4) //el blanco esta en la capa de arriba
-				{
-					switch(posActual[1]){
-						case 1: caraActualArista = 0; // F
-								break;
-						case 3: caraActualArista = 3; // L
-								break;
-						case 5: caraActualArista = 2; // B
-								break;
-						case 7: caraActualArista = 1; // R
-								break;
-						default: System.out.println( "errror en el swtchde calcularcantidaddeD" );
-								caraActualArista = -100; // R
-								break;
-					}		
-					caraDestino = GetCara( GetColor(1, caraActualArista)); //determina la cara donde tiene q ir
-				}
-				else{ // esta en la cara del medio el blanco
-					if( posActual[0] == 5 ){
-						caraActualArista = posActual[1] + 1;
-						if(caraActualArista == 4)
-							caraActualArista = 0;
-						caraDestino = GetCara( GetColor(3, caraActualArista)); //determina la cara donde tiene q ir
-					}
-					else{
-						caraActualArista= posActual[1] - 1;
-						if(caraActualArista == -1)
-							caraActualArista = 3;
-						caraDestino = GetCara( GetColor(5, caraActualArista)); //determina la cara donde tiene q ir
-					}		
-				}
-				
-				distancia = caraDestino - caraActualArista;            
-				
-				// hace q 3 giros para un lado los cambie por 1 giro para el otro
-				if(distancia == 3){
-					distancia = -1;
-				}
-				if(distancia == -3){
-					distancia = 1;
-				}
-					
-				if(distancia < 0){
-					for(i=0; i<distancia; i++){
-						DantiHorario();
-					}
-				}
-				else {
-					for(i=0; i<distancia; i++){
-						Dhorario();
-					}
-				}
-				
-				// Hace el giro para q quede bien puesta
-				
-				if(posActual[0] == 4){
-					GirarCaraHorario(caraActualArista);
-					GirarCaraHorario(caraActualArista);
-				}
-				else if( posActual[1] == 3){
-					GirarCaraHorario(caraActualArista);
-				}
-				else{
-					GirarCaraAntihorario(caraActualArista);
-				}
-				
-				//rehace los giros de abajo (para el otro lado) para q quede todo bien
-				if(distancia < 0){
-					for(i=0; i<distancia; i++){
-						Dhorario();
-					}
-				}
-				else {
-					for(i=0; i<distancia; i++){
-						DantiHorario();
-					}
-				}
+				PonerAbajoDesdeElMedio(posActual);
 			}
 			else {
-				
-				
-			}
-			
+				posActual = HayBlancosArriba(); // Para los blancos que halla en U
+				if(  posActual[0] == -1){
+					PonerAbajoDesdeU(posActual);
+				}
+				else {
+					/*
+					posActual = HayBlancosEnD(); // Para los blancos que halla mal puestos en D
+					if(  posActual[0] == -1){
+						PonerAbajoDesdeD(posActual);
+					}
+					else {
+											/*
+						posActual = HayBlancosArribaAlCostado();	//para los blancos que halla en la posicion 1 de las capas F, L R o D;
+						if(  posActual[0] == -1){
+							PonerAbajoDesdeArribaAlCostado(posActual);
+						}
+						else {
+							posActual = HayBlancosAbajoAlCostado();  // Para los blancos que hallla en la posicion 7 de la capas F, L R o D;
+							if(  posActual[0] == -1){
+								PonerAbajoDesdeAbajoAlCostado(posActual);
+							}
+						}
+					}
+					*/
+				}
+					
+			}		
 		}
-
 	}
 	
-	private int calcularCantidadDeD(int[] posActual) {
-		int distancia;
-		int caraDestino;
-		int caraActualArista;
+	
+	private void PonerAbajoDesdeElMedio( int[] posActual){
+		int caraActualArista; // en que cara va  a estar la otra parte de la arista
+		int caraDestino;	  // en que cara tiene que quedar la otra parte de la arista
+		int distancia;		  // cuantos giros D va  atener q hacer
+		int i;
 		
-		
-		// determina donde esta la otra parte de la arista 
-		if(posActual[0] == 4) //el blanco esta en la capa de arriba
-		{
-			switch(posActual[1]){
-				case 1: caraActualArista = 0; // F
-						break;
-				case 3: caraActualArista = 3; // L
-						break;
-				case 5: caraActualArista = 2; // B
-						break;
-				case 7: caraActualArista = 1; // R
-						break;
-				default: System.out.println( "errror en el swtchde calcularcantidaddeD" );
-						caraActualArista = -100; // R
-						break;
-			}		
-			caraDestino = GetCara( GetColor(1, caraActualArista)); //determina la cara donde tiene q ir
-		}
-		else{ // esta en la cara del medio el blanco
-			if( posActual[0] == 5 ){
-				caraActualArista = posActual[1] + 1;
-				if(caraActualArista == 4)
-					caraActualArista = 0;
-				caraDestino = GetCara( GetColor(3, caraActualArista)); //determina la cara donde tiene q ir
-			}
-			else{
-				caraActualArista= posActual[1] - 1;
-				if(caraActualArista == -1)
-					caraActualArista = 3;
-				caraDestino = GetCara( GetColor(5, caraActualArista)); //determina la cara donde tiene q ir
-			}		
-		}
-		
-		distancia = caraDestino - caraActualArista;            
+		// determina en que cara va  a estar la otra parte de la arista
+		switch(posActual[1]){
+			case 1: caraActualArista = 0; // F
+					break;
+			case 3: caraActualArista = 3; // L
+					break;
+			case 5: caraActualArista = 2; // B
+					break;
+			case 7: caraActualArista = 1; // R
+					break;
+			default: System.out.println( "errror en el swtchde calcularcantidaddeD" );
+					caraActualArista = -100; // R
+					break;
+		}		
+		caraDestino = GetCara( GetColor(1, caraActualArista)); //determina en que cara tiene que quedar la otra parte de la arista
+
+		distancia = caraDestino - caraActualArista;            // calcula la cantidad de giros en D que va  atener q hacer
 		
 		// hace q 3 giros para un lado los cambie por 1 giro para el otro
 		if(distancia == 3){
@@ -788,15 +712,109 @@ public class Cubo {
 		if(distancia == -3){
 			distancia = 1;
 		}
+			
+		// hace los giros en D correspondientes
+		if(distancia < 0){
+			for(i=0; i<distancia; i++){
+				DantiHorario();
+			}
+		}
+		else {
+			for(i=0; i<distancia; i++){
+				Dhorario();
+			}
+		}
 		
-		return distancia;
+		// Hace el giro doble para q quede bien puesta
+		GirarCaraHorario(caraActualArista);
+		GirarCaraHorario(caraActualArista);
+
+
+		//rehace los giros en D (para el otro lado) para q quede todo bien
+		if(distancia < 0){
+			for(i=0; i<distancia; i++){
+				Dhorario();
+			}
+		}
+		else {
+			for(i=0; i<distancia; i++){
+				DantiHorario();
+			}
+		}
+	}
+	
+	private void PonerAbajoDesdeU( int[] posActual){
+		int caraActualArista; // en que cara va  a estar la otra parte de la arista
+		int caraDestino;	  // en que cara tiene que quedar la otra parte de la arista
+		int distancia;		  // cuantos giros D va  atener q hacer
+		int i;
+
+		
+		// determina en que cara va  a estar la otra parte de la arista
+		if( posActual[0] == 5 ){
+			caraActualArista = posActual[1] + 1;
+			if(caraActualArista == 4)
+				caraActualArista = 0;
+			caraDestino = GetCara( GetColor(3, caraActualArista)); //determina en que cara tiene que quedar la otra parte de la arista
+		}
+		else{
+			caraActualArista= posActual[1] - 1;
+			if(caraActualArista == -1)
+				caraActualArista = 3;
+			caraDestino = GetCara( GetColor(5, caraActualArista)); //determina en que cara tiene que quedar la otra parte de la arista
+		}		
+		
+		distancia = caraDestino - caraActualArista;   				// calcula la cantidad de giros en D que va  atener q hacer         
+		
+		// hace q 3 giros para un lado los cambie por 1 giro para el otro
+		if(distancia == 3){
+			distancia = -1;
+		}
+		if(distancia == -3){
+			distancia = 1;
+		}
+			
+		// Hace los giros en D necesarios
+		if(distancia < 0){
+			for(i=0; i<distancia; i++){
+				DantiHorario();
+			}
+		}
+		else {
+			for(i=0; i<distancia; i++){
+				Dhorario();
+			}
+		}
+		
+		// Hace el giro(L, R F o B) para q quede bien puesta
+		if( posActual[1] == 3){
+			GirarCaraHorario(caraActualArista);
+		}
+		else{
+			GirarCaraAntihorario(caraActualArista);
+		}
+		
+		//rehace los giros de abajo (para el otro lado) para q quede todo bien puesto
+		if(distancia < 0){
+			for(i=0; i<distancia; i++){
+				Dhorario();
+			}
+		}
+		else {
+			for(i=0; i<distancia; i++){
+				DantiHorario();
+			}
+		}
+		
 	}
 
+/*
 	public int HayBlancosEnD(){
 		
 		return -1;
 	}
-	
+*/
+	//Busca los blancos en la posicion 3 y 5 de las capas F, L, R o D;
 	public int[] HayBlancosEnElMedio(){
 		int i;
 		int posActual[] = new int[2];
@@ -819,6 +837,7 @@ public class Cubo {
 		return posActual;
 	}
 	
+	//Busca los blancos en las pociciones 1, 3, 5 o 7 de la capa U
 	public int[] HayBlancosArriba(){
 		int i;
 		int posActual[] = new int[2];

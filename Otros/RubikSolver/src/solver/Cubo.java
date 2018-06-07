@@ -2,44 +2,44 @@ package solver;
 
 public class Cubo {
 
-	public final int PIEZAS_POR_CARA = 9;
-	public final int CANT_CARAS = 6;
+	public static final int PIEZAS_POR_CARA = 9;
+	public static final int CANT_CARAS = 6;
 
 	private char[][] cubo = new char[CANT_CARAS][PIEZAS_POR_CARA];
 
-	public final int F = 1;
-	public final int R = 2;
-	public final int B = 3;
-	public final int L = 4;
-	public final int D = 5;
-	public final int U = 0;
+	public static final int F = 1;
+	public static final int R = 2;
+	public static final int B = 3;
+	public static final int L = 4;
+	public static final int D = 5;
+	public static final int U = 0;
 
-	public final int CARA_AMARILLA = D;
-	public final int CARA_AZUL = R;
-	public final int CARA_BLANCA = U;
-	public final int CARA_ROJA = F;
-	public final int CARA_VERDE = L;
-	public final int CARA_NARANJA = B;
+	public static final int CARA_AMARILLA = D;
+	public static final int CARA_AZUL = R;
+	public static final int CARA_BLANCA = U;
+	public static final int CARA_ROJA = F;
+	public static final int CARA_VERDE = L;
+	public static final int CARA_NARANJA = B;
 
-	public final char AMARILLO ='Y';
-	public final char ROJO ='R';
-	public final char VERDE ='G';
-	public final char AZUL ='B';
-	public final char NARANJA ='O';
-	public final char BLANCO ='W';
+	public static final char AMARILLO ='Y';
+	public static final char ROJO ='R';
+	public static final char VERDE ='G';
+	public static final char AZUL ='B';
+	public static final char NARANJA ='O';
+	public static final char BLANCO ='W';
 
-	public final String U_HORARIO = "U";
-	public final String U_ANTI_HORARIO = "Ua";
-	public final String L_HORARIO = "L";
-	public final String L_ANTI_HORARIO = "La";
-	public final String R_HORARIO = "R";
-	public final String R_ANTI_HORARIO = "Ra";
-	public final String F_HORARIO = "F";
-	public final String F_ANTI_HORARIO  = "Fa";
-	public final String B_HORARIO = "B";
-	public final String B_ANTI_HORARIO  = "Ba";
-	public final String D_HORARIO = "D";
-	public final String D_ANTI_HORARIO  = "Da";
+	public static final String U_HORARIO = "U";
+	public static final String U_ANTI_HORARIO = "Ua";
+	public static final String L_HORARIO = "L";
+	public static final String L_ANTI_HORARIO = "La";
+	public static final String R_HORARIO = "R";
+	public static final String R_ANTI_HORARIO = "Ra";
+	public static final String F_HORARIO = "F";
+	public static final String F_ANTI_HORARIO  = "Fa";
+	public static final String B_HORARIO = "B";
+	public static final String B_ANTI_HORARIO  = "Ba";
+	public static final String D_HORARIO = "D";
+	public static final String D_ANTI_HORARIO  = "Da";
 	
 	public void SetColor(char color, int pieza, int cara) {
 		cubo[cara][pieza] = color;

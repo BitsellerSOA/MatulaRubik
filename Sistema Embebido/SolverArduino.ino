@@ -88,3 +88,47 @@ void fA()
    posBrazoLateral = FC;
 }
 
+
+
+// TRADUCE LA LECTURA DE LA SOLUCION EN LLAMADA A LAS FUNCIONES PARA LOS MOVIMIENTOS
+void mover(char m){
+  switch(m){
+    case R:
+      r();
+    break;
+    case RA:
+      rA();
+    break;
+    case L:
+      l();
+    break;
+    case LA:
+      lA();
+    break;
+    case U:
+      u();
+    break;
+    case UA:
+      uA();
+    break;
+    case D:
+      d();
+    break;
+    case DA:
+      dA();
+    break;
+    case B:
+      b();
+    break;
+    case BA:
+      bA();
+    break;
+    case FC:
+      f();
+    break;
+    case FA:
+      fA();
+    break;
+  }
+}
+

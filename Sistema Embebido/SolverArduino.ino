@@ -11,7 +11,6 @@
 #define BA 'W' // CARACTER QUE REPRESENTA EN LA SOLUCION UN MOVIMIENTO DE LA CARA TRASERA SENTIDO ANTI-HORARIO
 #define FA 'N' // CARACTER QUE REPRESENTA EN LA SOLUCION UN MOVIMIENTO DE LA CARA FRONTAL SENTIDO ANTI-HORARIO
 
-
 #include <SPI.h>
 #include <Ethernet.h>
 byte mac[] = {
@@ -20,11 +19,9 @@ byte mac[] = {
 IPAddress ip(192, 168, 1, 177);
 EthernetServer server(80);
 
-
 // L Y R SERAN MOVIDOS POR LOS BRAZOS INFERIOR Y SUPERIOR EN FORMA RELATIVA A COMO SE COLOQUE EL CUBO
 // U B F D SERAN MOVIDOS POR EL BRAZO LATERAL 
 char posBrazoLateral='N';  // VARIABLE GLOBAL QUE ALMACENA LA POSICION ACTUAL DEL BRAZO LATERAL
-
 
 void setup() {
 }
@@ -98,8 +95,6 @@ void fA()
    posBrazoLateral = FC;
 }
 
-
-
 // TRADUCE LA LECTURA DE LA SOLUCION EN LLAMADA A LAS FUNCIONES PARA LOS MOVIMIENTOS
 void mover(char m){
   switch(m){
@@ -140,5 +135,42 @@ void mover(char m){
       fA();
     break;
   }
+}
+
+
+
+bool existeSolucion()
+{
+  
+}
+
+bool leerPulsador()
+{
+  
+}
+
+void descargarSolucion()
+{
+  
+}
+
+void prepararBrazosResolver()
+{
+  
+}
+
+void entregarCubo()
+{
+  
+}
+
+void procesarSolucion()
+{
+  
+}
+
+void prepararRecepcion()
+{
+  
 }
 

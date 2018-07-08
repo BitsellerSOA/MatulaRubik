@@ -1,0 +1,69 @@
+\mainmatter  % start of an individual contribution
+
+% first the title is needed
+\title{Trabajo de Investigación:\\
+Integración de HPC en IOT}
+
+% a short form should be given in case it is too long for the running head
+\titlerunning{Investigación: HPC y Rubik}
+
+% the name(s) of the author(s) follow(s) next
+%
+% NB: Chinese authors should write their first names(s) in front of
+% their surnames. This ensures that the names appear correctly in
+% the running heads and the author index.
+%
+\author{Adrian Radice%
+\and Facundo Sanabria}
+%
+\authorrunning{Investigación: HPC y Rubik}
+% (feature abused for this document to repeat the title also on left hand pages)
+
+% the affiliations are given next; don't give your e-mail address
+% unless you accept that it will be published
+\institute{Universidad Nacional de La Matanza,\\ Departamento de ingeniería e Investigaciones Tecnológicas,\\
+Florencio Varela 1903 - San Justo, Argentina\\
+\mailsa\\
+\url{http://www.github.com/BitesellerSOA}}
+
+%
+% NB: a more complex sample for affiliations and the mapping to the
+% corresponding authors can be found in the file "llncs.dem"
+% (search for the string "\mainmatter" where a contribution starts).
+% "llncs.dem" accompanies the document class "llncs.cls".
+%
+
+\toctitle{Lecture Notes in Computer Science}
+\tocauthor{Authors' Instructions}
+\maketitle
+
+
+\begin{abstract}
+El objetivo del presente trabajo es investigar los beneficios de incorporar HPC en el proyecto de IOT
+\MR. Dicho proyecto tiene como desafío resolver un problema NP.
+\keywords{HPC, IOT, Android, Rubik, Paralelismo}
+\end{abstract}
+
+
+\section{Introducción}
+
+COMPLETAR
+
+
+\section{Desarrollo}
+
+COMPLETAR
+
+
+\section{Explicación Algoritmo}
+
+COMPLETAR
+
+\section{Pruebas que pueden realizarse}
+COMPLETAR
+
+
+\begin{thebibliography}{4}
+\end{thebibliography}
+
+
